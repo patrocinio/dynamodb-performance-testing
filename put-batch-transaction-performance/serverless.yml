@@ -1,3 +1,5 @@
+org: patrocinio
+app: dynamodb-performance-testing-dev
 service: dynamodb-performance-testing
 
 plugins:
@@ -5,7 +7,7 @@ plugins:
 
 provider:
   name: aws
-  runtime: python3.7
+  runtime: python3.10
   stage: dev
   region: us-east-1
   iamRoleStatements:
