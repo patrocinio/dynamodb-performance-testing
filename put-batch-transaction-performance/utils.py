@@ -1,10 +1,13 @@
 import os
-import uuid
+import random
 
 import boto3
 
 TABLE = os.environ['TABLE_NAME']
 
+def generate_key():
+    n = random.randint(0,100)
+    return n*n % 100
 
 def get_client():
     client = boto3.client('dynamodb')
@@ -33,7 +36,7 @@ def make_put_item():
         'TableName': TABLE,
         'Item': {
             'Id': {
-                'S': str(uuid.uuid4())
+                'S': str(generate_key())
             }
         }
     }
@@ -46,7 +49,7 @@ def make_batch_items(count):
             'PutRequest': {
                 'Item': {
                     'Id': {
-                        'S': str(uuid.uuid4())
+                        'S': str(generate_key())
                     } 
                 }
             }
@@ -66,7 +69,7 @@ def make_transact_items(count, fail=False):
                 'TableName': TABLE,
                 'Item': {
                     'Id': {
-                        'S': str(uuid.uuid4())
+                        'S': str(generate_key())
                     } 
                 }
             }

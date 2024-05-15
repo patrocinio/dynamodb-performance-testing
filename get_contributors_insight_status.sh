@@ -1,0 +1,1 @@
+aws dynamodb describe-contributor-insights --table-name dynamodb-performance-testing-dev-TestTable-GVUF35WLA54Q
